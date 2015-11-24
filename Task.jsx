@@ -7,6 +7,9 @@ Task=React.createClass({
             $set:{checked:!this.props.task.checked}
         });
     },
+    deleteThisTask(){
+        Tasks.remove(this.probs.task._id);
+    },
     render(){
         return (
             <li>{this.props.task.text}</li>
