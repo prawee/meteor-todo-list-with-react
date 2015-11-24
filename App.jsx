@@ -8,6 +8,11 @@ App =React.createClass({
         ];
     },*/
     mixins:[ReactMeteorData],
+    getInitialState(){
+        return {
+            hideCompleted:false
+        }
+    },
     getMeteorData(){
         return {
             tasks:Tasks.find({},{sort:{createdAt:-1}}).fetch()
