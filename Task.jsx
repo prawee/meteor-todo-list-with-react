@@ -13,7 +13,17 @@ Task=React.createClass({
     render(){
         const taskClassName=this.props.task.checked ? "checked":"";
         return (
-            <li>{this.props.task.text}</li>
+            <li className={taskClassName}>
+                <button className="delete" onClick={this.deleteThisTask}>
+                    &times;
+                </button>
+
+                <input type="checkbox"
+                    readOnly={true}
+                    checked={this.props.task.checked}
+                    onClick={this.toggleChecked} />
+                <span className="text">{this.props.task.text}</span>
+            </li>
         );
     }
 });
