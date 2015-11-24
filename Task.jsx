@@ -11,6 +11,7 @@ Task=React.createClass({
         Tasks.remove(this.probs.task._id);
     },
     render(){
+        const taskClassName=this.props.task.checked ? "checked":"";
         return (
             <li>{this.props.task.text}</li>
         );
