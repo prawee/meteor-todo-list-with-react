@@ -21,7 +21,8 @@ App =React.createClass({
         }
         return {
             tasks:Tasks.find(query,{sort:{createdAt:-1}}).fetch(),
-            inCompleteCount:Tasks.find({checked:{$ne:true}}).count()
+            inCompleteCount:Tasks.find({checked:{$ne:true}}).count(),
+            currentUser:Meteor.user()
         }
     },
     renderTasks(){
