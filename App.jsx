@@ -14,8 +14,13 @@ App =React.createClass({
         }
     },
     getMeteorData(){
+        let query={};
+
+        if(this.state.hideCompleted){
+            query={checked:{$ne:true}};
+        }
         return {
-            tasks:Tasks.find({},{sort:{createdAt:-1}}).fetch()
+            tasks:Tasks.find(query,{sort:{createdAt:-1}}).fetch()
         }
     },
     renderTasks(){
@@ -35,6 +40,11 @@ App =React.createClass({
         });
         React.findDOMNode(this.refs.textInput).value="";
     },
+    toggleHideCompleted(){
+        this.setState({
+            hideCompleted:!this.state.hideCompleted
+        });
+    },
     render(){
         return (
             <div className="container">
@@ -46,6 +56,7 @@ App =React.createClass({
                             checked={this.state.hideCompleted}
                             onClick={this.toggleHideCompleted}
                             readOnly={true}/>
+                        Hide Completed Tasks
                     </label>
 
                     <form className="new-task" onSubmit={this.handleSubmit}>
