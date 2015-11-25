@@ -22,6 +22,12 @@ Meteor.methods({
             owner:Meteor.userId(),
             username:Meteor.user().username
         });
+    },
+    removeTask(taskId){
+        Tasks.remove(taskId);
+    },
+    setChecked(taskId,setChecked){
+        Tasks.update(taskId,{$set:{checked:setChecked}});
     }
 });
 
