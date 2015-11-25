@@ -37,7 +37,9 @@ App =React.createClass({
         var text=React.findDOMNode(this.refs.textInput).value.trim();
         Tasks.insert({
             text:text,
-            createdAt:new Date()
+            createdAt:new Date(),
+            owner:Meteor.userId(),
+            username:Meteor.user().username
         });
         React.findDOMNode(this.refs.textInput).value="";
     },
