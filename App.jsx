@@ -46,10 +46,9 @@ App =React.createClass({
         React.findDOMNode(this.refs.textInput).value="";
     },
     toggleHideCompleted(){
-        /*this.setState({
+        this.setState({
             hideCompleted:!this.state.hideCompleted
-        });*/
-        Meteor.call("setChecked",this.props.task._id,!this.props.task.checked);
+        });
     },
     render(){
         return (
