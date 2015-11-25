@@ -17,7 +17,7 @@ Task=React.createClass({
         Meteor.call("setPrivate",this.props.task._id,!this.props.task.private);
     },
     render(){
-        const taskClassName=this.props.task.checked ? "checked":"";
+        const taskClassName=(this.props.task.checked ? "checked":"")+" "+(this.props.task.private?"private":"");
         return (
             <li className={taskClassName}>
                 <button className="delete" onClick={this.deleteThisTask}>
