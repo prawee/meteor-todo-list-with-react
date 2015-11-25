@@ -36,12 +36,13 @@ App =React.createClass({
     handleSubmit(event){
         event.preventDefault();
         var text=React.findDOMNode(this.refs.textInput).value.trim();
-        Tasks.insert({
+        /*Tasks.insert({
             text:text,
             createdAt:new Date(),
             owner:Meteor.userId(),
             username:Meteor.user().username
-        });
+        });*/
+        Meteor.call("addTask",text);
         React.findDOMNode(this.refs.textInput).value="";
     },
     toggleHideCompleted(){
