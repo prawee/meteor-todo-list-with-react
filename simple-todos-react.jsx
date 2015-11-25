@@ -11,6 +11,20 @@ if (Meteor.isClient) {
     });
 }
 
+Meteor.methods({
+    addTask(text){
+        if(!Meteor.userId()){
+            throw new Meteor.Error("not-authenrized");
+        }
+        Tasks.insert({
+            text:text,
+            createdAt:new Date(),
+            owner:Meteor.userId(),
+            username:Meteor.user().username
+        });
+    }
+});
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
