@@ -26,6 +26,10 @@ Meteor.methods({
         });
     },
     removeTask(taskId){
+        const task=Tasks.findOne(taskId);
+        if(task.private && task.owner!==Meteor.userId()){
+            throw new Meteor.Error("not-authorized");
+        }
         Tasks.remove(taskId);
     },
     setChecked(taskId,setChecked){
